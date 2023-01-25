@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities; 
+
+body{
+  font-family: 'Oswald', sans-serif;
+  box-sizing: border-box;
+}
+.boxShadow{
+  box-shadow: 0px 2px 10px -5px rgba(21,6,5,1);
+}
