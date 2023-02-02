@@ -16,7 +16,7 @@ const CapstoneContextProvider = ({ children }: ProviderProp) => {
   //   Fetching Data
   const url =
     "https://raw.githubusercontent.com/bobziroll/scrimba-react-bootcamp-images/master/images.json";
-    const {apiData,setApiData}=useFetcher(url)
+  const { apiData, setApiData } = useFetcher(url)
   //   For Favouriting
   const FavrtHandler = (clickedId: number) => {
     let changedData: apiDataType[] = [];
@@ -36,16 +36,20 @@ const CapstoneContextProvider = ({ children }: ProviderProp) => {
 
   //   For Adding and Removing Items From Cart
   const addtoCart = (para: number) => {
-    const cartedImage = apiData.find(({ id }) => id == para);
-    if (!cartData.includes(cartedImage as apiDataType)) {
-        setCartData([...cartData,cartedImage as apiDataType])
-    } else {
-      alert("already Carted");
+    const item = apiData.find((data:apiDataType)=>{
+    return  data.id === para
+    
+    })
+    if(!cartData.includes(item)){
+      cartData.push(item)
+    }
+    else{
+      console.log("Already Carted")
     }
   };
 
   useEffect(() => {
-    setLocalStorageData("carted",cartData)
+    setLocalStorageData("carted", cartData)
   }, [cartData]);
 
   const removeFromCart = (para: number) => {
@@ -58,7 +62,7 @@ const CapstoneContextProvider = ({ children }: ProviderProp) => {
   //   Checking Out Part
   const checkOut = () => {
     setCartData([]);
-    setLocalStorageData("carted",cartData)
+    setLocalStorageData("carted", cartData)
     console.log("Order Placed");
     setIsCheckingOut(false);
   };
