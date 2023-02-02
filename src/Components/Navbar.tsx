@@ -7,7 +7,7 @@ import { CapstoneContext } from "../CapstoneContext";
 
 export const Navbar = () => {
   const {cartData} =useContext(CapstoneContext)
-  const CartIcon=cartData.length !== 0 ? <BsCart2/> : <BsCartX/>
+  const CartIcon=cartData.length !==  0 ? <BsCart2/> : <BsCartX/>
   return (
     <main className="flex bg-orange-400 p-3 items-center justify-between boxShadow">
       <div className="text-[2.5em] font-bold text-gray-800 cursor-pointer hover:text-black">

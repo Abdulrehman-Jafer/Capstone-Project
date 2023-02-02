@@ -1,11 +1,14 @@
-import React from "react";
-import { apiDataType } from "../CapstoneContext";
+import { apiDataType } from "../types";
 
 const useLocalStorage = () => {
+  // Set Local Storage
   const setLocalStorageData = (dataName: string, data: apiDataType[]) =>
     localStorage.setItem(dataName, JSON.stringify(data));
-  const getLocalStorageData = (dataName: string) =>
-    JSON.parse(localStorage.getItem(dataName));
+ // Get Local Storage 
+  const getLocalStorageData = (dataName:string) =>{
+   const data = localStorage.getItem(dataName)
+   return JSON.parse(data as any)
+  }
 
   return { setLocalStorageData, getLocalStorageData };
 };
