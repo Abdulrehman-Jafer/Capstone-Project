@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react'
-import { apiDataType } from '../CapstoneContext';
+import { apiDataType } from '../types';
 
 export const useFetcher = (url:string) => {
   const [apiData, setApiData] = useState<apiDataType[]>([]);
@@ -7,7 +7,7 @@ export const useFetcher = (url:string) => {
   useEffect(() => {
     const DataFetcher = async () => {
       const data = await fetch(url).then((response) => response.json());
-      const pricedData = data.map((allData) => {
+      const pricedData = data.map((allData:apiDataType) => {
         return {
           ...allData,
           price: Math.floor(Math.random() * 10) + Math.random(),
