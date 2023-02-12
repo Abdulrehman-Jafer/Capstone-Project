@@ -19,4 +19,3 @@ export const useFetcher = (url:string) => {
   }, []);
   return {apiData,setApiData}
 }
-

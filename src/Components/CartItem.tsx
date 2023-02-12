@@ -5,7 +5,7 @@ import { CapstoneContext } from "../CapstoneContext";
 type propType = {
   id: number;
   url: string;
-  price?: number;
+  price: number;
 };
 
 const CartItem = ({ id, url, price }: propType) => {
@@ -23,7 +23,7 @@ const CartItem = ({ id, url, price }: propType) => {
           }
         </div>
         <div className="text-2xl">
-          {price.toLocaleString("en-Us", {
+          {price?.toLocaleString("en-Us", {
             style: "currency",
             currency: "USD",
           })}

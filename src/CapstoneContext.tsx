@@ -11,7 +11,7 @@ export const CapstoneContext = createContext({} as ofProviderValue);
 const CapstoneContextProvider = ({ children }: ProviderProp) => {
   const [isCheckingOut, setIsCheckingOut] = useState(false);
   const { setLocalStorageData, getLocalStorageData } = useLocalStorage();
-  const [cartData, setCartData] = useState<apiDataType[]>(getLocalStorageData("carted"));
+  const [cartData, setCartData] = useState<apiDataType[]>(getLocalStorageData("cartData"));
 
   //   Fetching Data
   const url =
@@ -35,34 +35,30 @@ const CapstoneContextProvider = ({ children }: ProviderProp) => {
   };
 
   //   For Adding and Removing Items From Cart
-  const addtoCart = (para: number) => {
-    const item = apiData.find((data:apiDataType)=>{
-    return  data.id === para
-    
+  const addtoCart = (id: number) => {
+    const selectedItem = apiData.find(data => {
+      return data.id === id
     })
-    if(!cartData.includes(item)){
-      cartData.push(item)
-    }
-    else{
-      console.log("Already Carted")
-    }
+    selectedItem && !cartData.includes(selectedItem) ?
+        setCartData(prev => {
+          return [...prev, selectedItem]
+        }) : ""
+      setLocalStorageData("cartData",cartData)
   };
 
-  useEffect(() => {
-    setLocalStorageData("carted", cartData)
-  }, [cartData]);
-
-  const removeFromCart = (para: number) => {
-    const filteredCartData = cartData.filter(({ id }) => {
-      return id !== para;
+// Remove from cart
+  const removeFromCart = (id: number) => {
+    const filteredCartData = cartData.filter(item => {
+      return item.id !== id;
     });
     setCartData(filteredCartData);
+    setLocalStorageData("cartData",cartData)
   };
 
   //   Checking Out Part
   const checkOut = () => {
     setCartData([]);
-    setLocalStorageData("carted", cartData)
+    setLocalStorageData("cartData",[])
     console.log("Order Placed");
     setIsCheckingOut(false);
   };

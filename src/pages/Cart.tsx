@@ -1,28 +1,18 @@
-import React, { useContext, useState, useEffect } from "react";
+import { useContext, useState} from "react";
 import { Navbar } from "../Components/Navbar";
 import { CapstoneContext } from "../CapstoneContext";
 import CartItem from "../Components/CartItem";
 import { Link } from "react-router-dom";
+
+
+
 export const Cart = () => {
-  const [totalPrice, setTotalPrice] = useState<number>(0);
-
   const { cartData, isCheckingOut, checkOut } = useContext(CapstoneContext);
-
-  const cartMap = cartData.map(({ id, url, price }) => {
-    return <CartItem key={id} id={id} url={url} price={price} />;
+  let total = 0
+  const cartMap = cartData.map(({ id, url,price }) => {
+    total = total + (price ?  price : 1)
+    return <CartItem key={id} id={id} url={url} price={price!} />;
   });
-
-  useEffect(() => {
-    const MyFunc = () => {
-      let globalPrice = 0;
-      cartData.map((allData) => {
-        return (globalPrice = globalPrice + allData.price);
-      });
-      setTotalPrice(globalPrice);
-    };
-    MyFunc();
-  }, [cartData.length]);
-
   return (
     <main>
       {<Navbar />}
@@ -53,7 +43,7 @@ export const Cart = () => {
           )}
           <span className="text-2xl">
             Total :{" "}
-            {totalPrice.toLocaleString("en-US", {
+            {total.toLocaleString("en-US", {
               style: "currency",
               currency: "USD",
             })}
