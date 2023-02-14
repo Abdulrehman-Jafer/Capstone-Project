@@ -11,7 +11,7 @@ export const CapstoneContext = createContext({} as ofProviderValue);
 const CapstoneContextProvider = ({ children }: ProviderProp) => {
   const [isCheckingOut, setIsCheckingOut] = useState(false);
   const { setLocalStorageData, getLocalStorageData } = useLocalStorage();
-  const [cartData, setCartData] = useState<apiDataType[]>(getLocalStorageData("cartData"));
+  const [cartData, setCartData] = useState<apiDataType[]>(getLocalStorageData("cartData") ? getLocalStorageData("cartData") : []);
 
   //   Fetching Data
   const url =
@@ -40,25 +40,25 @@ const CapstoneContextProvider = ({ children }: ProviderProp) => {
       return data.id === id
     })
     selectedItem && !cartData.includes(selectedItem) ?
-        setCartData(prev => {
-          return [...prev, selectedItem]
-        }) : ""
-      setLocalStorageData("cartData",cartData)
+      setCartData(prev => {
+        return [...prev, selectedItem]
+      }) : ""
+    setLocalStorageData("cartData", cartData)
   };
 
-// Remove from cart
+  // Remove from cart
   const removeFromCart = (id: number) => {
     const filteredCartData = cartData.filter(item => {
       return item.id !== id;
     });
     setCartData(filteredCartData);
-    setLocalStorageData("cartData",cartData)
+    setLocalStorageData("cartData", cartData)
   };
 
   //   Checking Out Part
   const checkOut = () => {
     setCartData([]);
-    setLocalStorageData("cartData",[])
+    setLocalStorageData("cartData", [])
     console.log("Order Placed");
     setIsCheckingOut(false);
   };
