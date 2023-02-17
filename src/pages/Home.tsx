@@ -12,10 +12,12 @@ export const Home = () => {
   return (
     <main>
       {<Navbar />}
-      <main className="p-3 w-[100%]">
-        <div className="flex gap-2 flex-wrap justify-center">{imageData.length !==10 ? mappedData : <div>Keep Calm Loading Your Images</div>}
+      <section className="p-3 w-[100%] h-[40rem]">
+        <div className="flex gap-2 flex-wrap justify-center">
+          {imageData.length ? mappedData : <div className="loader"></div>
+          }
         </div>
-      </main>
+      </section>
     </main>
   );
 };

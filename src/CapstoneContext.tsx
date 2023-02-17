@@ -52,7 +52,7 @@ const CapstoneContextProvider = ({ children }: ProviderProp) => {
       return item.id !== id;
     });
     setCartData(filteredCartData);
-    setLocalStorageData("cartData", cartData)
+    setLocalStorageData("cartData", filteredCartData)
   };
 
   //   Checking Out Part
