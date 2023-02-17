@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react'
-import { apiDataType } from '../types';
+import { apiDataType } from '../Context/types';
 
 export const useFetcher = (url:string) => {
   const [apiData, setApiData] = useState<apiDataType[]>([]);

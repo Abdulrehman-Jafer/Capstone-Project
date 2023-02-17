@@ -1,6 +1,6 @@
 import { useContext, useState} from "react";
 import { Navbar } from "../Components/Navbar";
-import { CapstoneContext } from "../CapstoneContext";
+import { CapstoneContext } from "../Context/CapstoneContext";
 import CartItem from "../Components/CartItem";
 import { Link } from "react-router-dom";
 
@@ -26,7 +26,7 @@ export const Cart = () => {
             </button>
           </Link>
         </div>
-        <div className="flex flex-col gap-5 flex-wrap justify-center">
+        <div className="flex flex-col gap-5 flex-wrap justify-center my-[1rem]">
           {cartData.length !== 0
             ? cartMap
             : "Your Cart Is Empty Please Add any Item in cart To Shop "}
@@ -34,14 +34,14 @@ export const Cart = () => {
         <div className="flex justify-end items-center gap-3">
           {cartData.length !== 0 && (
             <button
-              className="text-3xl border text-white px-3 bg-slate-700 rounded-[.4rem] hover:bg-slate-800 translate-y-[7%]"
+              className="sm:text-3xl border text-white px-3 bg-slate-700 rounded-[.4rem] hover:bg-slate-800 translate-y-[7%]"
               disabled={isCheckingOut}
               onClick={() => checkOut()}
             >
               {isCheckingOut ? "Your order is being Placed" : "Check Out"}
             </button>
           )}
-          <span className="text-2xl">
+          <span className="sm:text-2xl">
             Total :{" "}
             {total.toLocaleString("en-US", {
               style: "currency",

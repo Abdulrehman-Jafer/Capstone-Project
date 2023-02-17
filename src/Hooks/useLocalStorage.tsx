@@ -1,4 +1,4 @@
-import { apiDataType } from "../types";
+import { apiDataType } from "../Context/types";
 
 const useLocalStorage = () => {
   // Set Local Storage

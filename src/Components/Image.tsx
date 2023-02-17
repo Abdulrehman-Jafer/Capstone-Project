@@ -2,8 +2,8 @@ import React, { useState, useContext } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 import { AiOutlinePlus } from "react-icons/ai";
-import { CapstoneContext } from "../CapstoneContext";
-import { apiDataType } from "../types";
+import { CapstoneContext } from "../Context/CapstoneContext";
+import { apiDataType } from "../Context/types";
 import { BsCart2 } from "react-icons/bs";
 
 export const Image = ({ url, id, isFavorite }: apiDataType) => {

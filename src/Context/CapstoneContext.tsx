@@ -1,9 +1,10 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
-import useLocalStorage from "./Hooks/useLocalStorage";
-import { useFetcher } from "./Hooks/useFetcher";
+import useLocalStorage from "../Hooks/useLocalStorage";
+import { useFetcher } from "../Hooks/useFetcher";
 import { ofProviderValue } from "./types";
 import { ProviderProp } from "./types";
 import { apiDataType } from "./types";
+import {toast} from "react-toastify"
 
 
 export const CapstoneContext = createContext({} as ofProviderValue);
@@ -59,7 +60,7 @@ const CapstoneContextProvider = ({ children }: ProviderProp) => {
   const checkOut = () => {
     setCartData([]);
     setLocalStorageData("cartData", [])
-    console.log("Order Placed");
+    toast.success("Order Placed")
     setIsCheckingOut(false);
   };
   const setCheckOut = () => {

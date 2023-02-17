@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Navbar } from "../Components/Navbar";
-import { CapstoneContext } from "../CapstoneContext";
+import { CapstoneContext } from "../Context/CapstoneContext";
 import { Image } from "../Components/Image";
 export const Home = () => {
   const { imageData } = useContext(CapstoneContext);

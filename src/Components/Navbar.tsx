@@ -2,7 +2,7 @@ import React,{useContext} from "react";
 import { BsCart2 } from "react-icons/bs";
 import {BsCartX} from "react-icons/bs"
 import { Link } from "react-router-dom";
-import { CapstoneContext } from "../CapstoneContext";
+import { CapstoneContext } from "../Context/CapstoneContext";
 
 
 export const Navbar = () => {

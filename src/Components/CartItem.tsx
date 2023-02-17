@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { RxMinus } from "react-icons/rx";
-import { CapstoneContext } from "../CapstoneContext";
+import { CapstoneContext } from "../Context/CapstoneContext";
 
 type propType = {
   id: number;
